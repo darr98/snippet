@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.flex-container {
+    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between boxes */
+}
+
+.box {
+    width: 45%; /* Adjust to your preference */
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.submit-button {
+    margin-top: 10px;
+}
+
+.move-down {
+    transform: translateY(10px);
+}
