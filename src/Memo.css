@@ -1,0 +1,104 @@
+/* Memo.css */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 40;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  
+  .memo-container {
+    position: relative;
+    width: 300px;
+    padding: 16px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    z-index: 50;
+    
+  }
+  
+  .memo-container.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    cursor: default;
+  }
+  
+  .memo-title {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    width: 12px;
+    height: 12px;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    transform: rotate(45deg);
+    margin: 8px auto 0;
+  }
+  
+  .memo-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 150px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    font-size: 16px;
+  }
+  
+  .task-list {
+    margin-top: 16px;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .checkmark {
+    font-size: 14px;
+    color: #4caf50;
+  }
+  
+  .add-task {
+    background: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .add-task:hover {
+    background: #0056b3;
+  }
+  

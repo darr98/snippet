@@ -1,0 +1,40 @@
+.memo-container {
+    display: flex;          /* Enable flex container */
+    flex-wrap: wrap;      /* Allow items to wrap to the next line */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.memo-sticker {
+    width: calc(33.33% - 10px); /* 3 items per row, subtract margin */
+    background-color: #FFFF99; /* Light yellow */
+    border: 1px solid #CCC;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;    /* Include padding and border in the element's total width */
+}
+
+.add-button {
+    width: calc(33.33% - 10px); /* Same width as memo-sticker */
+    background-color: #4CAF50;  /* Green */
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.add-button:hover {
+    background-color: #3e8e41;
+}
+
+.App {
+    text-align: center;
+    font-family: sans-serif;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: grey;
+    }
+    .circle{
+        border-radius: 50%;
+        width: 6px;
+        height: 12px;
+        color: red;
+
+    }   
+</style>
+
+<body onclick="circleCal(event)">
+
+    
+<script>
+function circleCal(event){
+    let circleData = document.createElement("div")
+    circleData.className = "circle";
+    circleData.style.left = `${event.clientX}px`
+    circleData.style.top= `${event.clientY}px`
+    document.body.appendChild(circleData)
+}
+</script>
+</body>
+</html>
+

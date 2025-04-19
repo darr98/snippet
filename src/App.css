@@ -1,7 +1,277 @@
+
+
+@font-face {
+  font-family: 'semibold';
+  src: url('../fonts/Kommon/KommonGrotesk-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'bold';
+  src: url('../fonts/Kommon/KommonGrotesk-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'thin';
+  src: url('../fonts/Kommon/KommonGrotesk-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'light';
+  src: url('../fonts/Kommon/KommonGrotesk-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .App {
   text-align: center;
 }
 
+
+.head{
+  background-color: black;
+  width: 100%;
+  height:90px;
+  margin-bottom: 10%;
+}
+
+
+/*Layout*/
+/* Basic styles for the header and navigation */
+body {
+  font-family: 'light';
+  /* font-weight: 200; */
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  /* padding: 10px 20px;  */
+  /* height:60px; */
+  text-align: right; /* Aligns the buttons to the right */
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  gap: 60px; /* Space between buttons */
+  /* padding-right: 30px; */
+  padding: 20px 30px 20px 0px;
+}
+
+.nav-button {
+  color: rgb(163, 163, 163);
+  text-decoration: none;
+}
+
+.nav-button:hover {
+  color: rgb(248, 248, 248);
+}
+
+/* Layout End */
+
+/*Register template*/
+form {
+  width: 500px; /* Example width */
+   margin: 0 auto; 
+  border: 2px solid red;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  resize: none;
+  gap : 0
+}
+
+
+.requirements {
+  width: 100%;
+  margin-bottom: 0;
+  align-self: flex-start;
+  margin-top: 0;
+  /* display: flex; */
+  font-family: bold;
+  font-size: 0.63em;
+  color: black;
+  background-color: rgb(215, 213, 213);
+  
+}
+.form-group {
+  background-color: yellow;
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-bottom: 7px; */
+  width : 100%;
+  border: 2px solid green;
+  margin: auto;
+  /* padding: 10px , 30px ,10px ,30px; */
+  box-sizing: border-box;
+}
+
+.form-group label {
+  color : rgb(14, 51, 129);
+  font-family: 'semibold';
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  flex: 0 0 100px;
+  margin: 9px 0 10px 10px;
+  padding: 10px;
+}
+
+.form-group input[type="text"],.form-group input[type="password"]{
+  background-color: orange;
+  width:200px;
+  font-family: 'light';
+  font-size: small;
+  height: 16px;
+  min-width: 0;
+  padding: 10px 20px 10px 20px;
+  align-items: center;
+  margin: 7px 0px 7px 20px;
+  border-radius: 30px;
+  border: 3px solid rgb(97, 97, 117);
+  text-align: center;
+}
+
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
+.key-input-container {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.key-input-container button[type="button"] {
+  display: flex;
+  font-family: 'bold';
+  font-size: 0.6rem;
+  background-color: black;
+  color: white;
+  width: 40px;
+  border-radius: 40px;
+  height: 30px;
+  margin-left: 10px;
+  /* text-align: center; */
+  align-items: center;
+justify-content: center; 
+transform: scale(1); 
+border: 2px solid green; /* Solid full border */
+outline: none;           /* Optional: remove default outline */
+border-color: green;
+/* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);*/
+ /* box-shadow: 0px 2px 5px 3px rgba(0, 0, 0, 0.4);   */
+transition: box-shadow 0.2s ease, transform 0.2s ease;
+cursor: pointer;
+}
+
+.key-input-container button[type="button"]:active{
+
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
+  /* align-self: flex-end; */
+  transform: scale(0.8);
+  box-shadow: 0px 2px 4px 5px rgba(0, 0, 0, 0.2);  
+  /* outline: 4px solid green; */
+}
+.key-input-container button[type="button"]:hover{
+
+  box-shadow: 0px 2px 4px 5px rgba(0, 0, 0, 0.2);  
+  background-color: rgb(152, 150, 147);
+  color:rgb(13, 12, 12);
+}
+
+button[type="submit"] {
+  width: 20%;
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/*Register Template*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container{
+  display :flex;
+  border-radius: 1px;
+  align-content: center;
+  width: 100px;
+  height: 100px;
+  border-color: black;
+  border-width: 1px;
+  top: 20%;
+  left: 40%;
+  position: absolute;
+  border-style: solid;
+
+}
+.container1{
+display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  width: 300px; /* Adjusted width */
+  height: 200px; /* Adjusted height */
+  border: 1px solid black; /* Simplified border styling */
+  border-radius: 3px; /* Rounded corners */
+  margin: auto; /* Centers the box on the page */
+  position: absolute; /* Optional: Centers absolutely */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .todo-container {
   background-color: black;
   display: flex;

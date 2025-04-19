@@ -1,87 +1,57 @@
 import asyncio
 import websockets
 import json
-import datetime
-# Store todos in memory
-todos = []
-current_editing = None  # Track which memo is being edited
+import sys
+import os
 
-async def handler(websocket, path):
-    global current_editing
-    connections.add(websocket)
+# Add project_root to sys.path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(project_root)
+from DBConn.mongodb import collection
 
-    # Send existing todos to the newly connected client
-    print(f"Sending todos now")
-    print(f"New connection: {websocket}")
-    print(f'the todos curr are recied ${todos} ${datetime.datetime.now()}' )
-    await websocket.send(json.dumps({"type": "todos", "todos": todos}))
-    
+# Print the resolved path to check
+print(f"🔍 Resolved project root path: {project_root}")
+
+connected_clients = set()
+memos_state = []  # Global variable
+
+async def echo(websocket):
+    global memos_state  # Declare as global so it can be modified
+
+    # Register new client
+    connected_clients.add(websocket)
+    print(f"Client connected: {websocket}")
 
     try:
+        # Send current states to the new client
+        await websocket.send(json.dumps(memos_state))
+
+        # Fetch and broadcast data
         async for message in websocket:
-            data = json.loads(message)
-            print(f'the data recied ${data}')
-            if data["type"] == "edit":
-                print(f"we have edit")
-                # Update which user is editing the memo
-                todo_id = data["memoId"]
-                user = data["user"]
+            print(f"Received message: {message}")
+            memos_state = json.loads(message)  # Modify the global variable
 
-                # Check if another user is editing this memo
-                if current_editing and current_editing["memoId"] == todo_id:
-                    await websocket.send(json.dumps({
-                        "type": "editing",
-                        "memoId": todo_id,
-                        "user": current_editing["user"]
-                    }))
-                else:
-                    current_editing = {"memoId": todo_id, "user": user}
-                    # Update todos to reflect the editing user
-                    for todo in todos:
-                        if todo["id"] == todo_id:
-                            todo["editingUser"] = user
-
-                    # Notify all clients about the editing status
-                    await broadcast({"type": "editing", "memoId": todo_id, "user": user})
-
-            elif data["type"] == "addTodo":
-                print(f"we have addTodo")
-                new_todo = {"id": len(todos) + 1, "notes": "", "expanded": False}
-                todos.append(new_todo)
-                await broadcast({"type": "todos", "todos": todos})
-
-            elif data["type"] == "updateNote":
-                print(f"we have update")
-                todo_id = data["memoId"]
-                notes = data["notes"]
-
-                for todo in todos:
-                    if todo["id"] == todo_id:
-                        todo["notes"] = notes
-                
-                await broadcast({"type": "todos", "todos": todos})
-    
-    except websockets.ConnectionClosed:
-        print(f"Recieved path Closed :{path}")
+            # Broadcast message to all clients except sender
+            for client in connected_clients.copy():  # Copy set to avoid modification issues
+                if client != websocket:
+                    try:
+                        await client.send(message)
+                        print(f"Sent message to {client}")
+                    except websockets.exceptions.ConnectionClosed:
+                        print(f"Client {client} disconnected before receiving message.")
+                        connected_clients.remove(client)
+    except Exception as e:
+        print(f"Error: {e}")
     finally:
-        connections.remove(websocket)
-        print(f"Connection removed: {websocket}")
-
-
-
-async def broadcast(message):
-    # Send a message to all connected clients
-    for connection in connections:
-        if connection.open:
-            print(f"Hello, we hve open connection ${connection}")
-            await connection.send(json.dumps(message))
-
-connections = set()
+        if websocket in connected_clients:
+            connected_clients.remove(websocket)
+        print(f"Client disconnected: {websocket}")
 
 async def main():
-    print("Hello, main!")
-    async with websockets.serve(handler, "localhost", 3000):
-        await asyncio.Future()  # run forever
+    start_server = await websockets.serve(echo, "localhost", 8080)
+
+    print("WebSocket server started on ws://localhost:8080")
+    await start_server.wait_closed()  # Keep the server running
 
 if __name__ == "__main__":
     asyncio.run(main())

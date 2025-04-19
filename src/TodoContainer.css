@@ -1,23 +1,47 @@
+
+@font-face {
+    font-family: 'RLTHIN';
+    src: url('../fonts/Raleway-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  } 
+
+  @font-face {
+    font-family: 'RLLIGHT';
+    src: url('../fonts/Raleway-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  } 
+  @font-face {
+    font-family: 'RLREG';
+    src: url('../fonts/Raleway-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  } 
+
+  
+
 body {
-    font-family: Arial, sans-serif;
+    font-family:'RLREG', Arial, sans-serif;
+    background-color: green;
 }
+
+
 
 .flex-container {
-    background-color: red;
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    background-color: blue;
+    padding-top: 220px;
+    /* display: flex; */
+    align-content: flex-start;
+    /* flex-wrap: wrap;/ */
+    width: 80%;
+    height: 430px;
+    margin: 300px auto;
     gap: 10px; /* Space between boxes */
+    transition: 0.5s ease;
 }
 
-.box {
-    width: 45%; /* Adjust to your preference */
-    padding: 20px;
-    background-color: #007BFF;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
 
 .submit-button {
     margin-top: 10px;
@@ -26,3 +50,153 @@ body {
 .move-down {
     transform: translateY(10px);
 }
+
+.container-row{
+    width : 90%;
+    height: 200px;
+    display: flex;
+    border-color: green;
+    border-radius: 3px;
+    margin: 4px auto;
+    background-color: grey;
+
+  }
+  
+  .todo-container{
+        display : flex;
+        flex-direction: column;
+        background-color: black;
+        width :30%;
+        height: 80%;
+  }
+  .todo-box {
+    position: relative;
+    width: 95%;
+    height:50%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    border-radius: 40px;
+    border-color: red;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* padding: 10px; */
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+}
+.todo-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    background-color: yellow;
+  }
+
+
+  .todo-container:hover .todo-arrow {
+    display: block;
+  }
+
+  .todo-arrow {
+    display: none;
+    width: 95%;
+    height: 10px;
+    /* transform: translateX(-50%); */
+    /* border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff; */
+    background-color: green;
+  }
+
+.todo-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+.box-delete{
+    display: flex;
+width :100px;
+height : 30px;
+background-color: red;
+
+}
+.box-header{
+    display: flex;
+    width :40px;
+    height : 30px;
+    background-color: yellow;
+
+}
+
+.box-wrapper{
+  position: absolute;
+    display: flex;
+    top:20%;
+    left: 25%;
+    /* transform: translate(-50%, -50%);  */
+    width:45%;
+    border: 5px solid green;
+    height: 500px; /* Example height */
+    background-color: brown;
+    justify-content: start;
+    flex-direction: column;
+    align-items : center;
+}
+.check-wrapper{ 
+  min-height: 30%;
+  max-height: 40% ;
+  width: 90%;
+  border: 2px solid grey;
+  width: 80%;
+
+}
+.text-wrapper{
+  min-height: 30%;
+  max-height: 40% ;
+  width: 90%;
+  border: 2px solid blue;
+  width: 80%;
+
+}
+
+.text-desc{
+  resize: none;
+  width :90%;
+  min-height: 100px;
+  max-height: 45%;
+  overflow-y: auto;
+}
+
+
+/* .text-box{
+
+    background-color: white;
+    overflow-y: auto;
+    width : 90%;
+    height: 90%;
+ } */
+/* 
+ .check-box .check-desc{
+  font-size: small;
+  font-family: 'RLTHIN',Arial;
+}  */
+
+/* .box-desc .box-format{
+  font-family: 'RLLIGHT';
+  color : red;
+  text-decoration: none;
+} */
+/* .check-box{
+  display :flex;
+   background-color: yellow;  
+   width : 100%;
+   height: 70%;
+
+} */
+
+/* .check-box .check-item input[type = "checkbox"]{
+    cursor: pointer;
+}
+
+
+.check-box  .check-item.checked{
+    text-decoration: line-through; */
+/* } */
