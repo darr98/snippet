@@ -41,6 +41,7 @@ import Layout from './Layout';
 import Dashboard from './Dashboard';
 import User from './User';
 import RequireAuth from './RequireAuth';
+import Snip from './Snip';
 import { Routes, Route } from 'react-router-dom';
 interface AppProps {}
 
@@ -49,7 +50,9 @@ const App: React.FC<AppProps> = () => {
   return (
 
     <Routes>
-      <Route path="/" element={<Layout />}>
+
+      {/* <Route path="/" element={<Layout />}> */}
+      <Route path="/" element={<Dashboard />}>
       <Route path='register' element ={<Register/>}/>
       <Route path='login' element ={<Login/>}/>
 

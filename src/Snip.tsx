@@ -35,10 +35,14 @@ import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import "./Memo.css";
-interface AppProps {}
+interface DataProps {
+
+  nameTag : string,
+
+}
 
 
-const App: React.FC<AppProps> = () => {
+const Snip = () => {
   const [memos, setMemos] = useState<string[]>([]);
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
@@ -99,4 +103,4 @@ const App: React.FC<AppProps> = () => {
   );
 };
 
- export default App
+ export default Snip
