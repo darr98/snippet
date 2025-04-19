@@ -47,7 +47,7 @@ interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
   return (
-    /*Testing*/
+
     <Routes>
       <Route path="/" element={<Layout />}>
       <Route path='register' element ={<Register/>}/>
