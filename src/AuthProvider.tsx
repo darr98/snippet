@@ -5,10 +5,15 @@ interface AuthUserType {
   userId: string;
   accessToken: string;
 }
+interface DetAuthType {
+  showDetCard: boolean;
+}
 
 interface AuthContextType {
   auth: AuthUserType | null;
   setAuth: Dispatch<SetStateAction<AuthUserType | null>>;
+  IsdetCard : boolean;
+  setDetCard : Dispatch<SetStateAction<boolean>>;
 }
 
 interface AuthProviderProps {
@@ -17,12 +22,14 @@ interface AuthProviderProps {
 
 export const AuthContext = createContext<AuthContextType|undefined>(undefined)
 
+
 const AuthProvider:React.FC<AuthProviderProps>=({children})=>{
 
-    const [auth ,setAuth] = useState<AuthUserType | null>(null)
-
+  const [auth ,setAuth] = useState<AuthUserType | null>(null)
+  const [IsdetCard ,setDetCard] = useState<boolean>(false);
+  
     return(
-        <AuthContext.Provider value={{auth ,setAuth}}>
+        <AuthContext.Provider value={{auth ,setAuth,IsdetCard,setDetCard}}>
         {children}
         </AuthContext.Provider>
 

@@ -1,25 +1,108 @@
-body {
-background:white
+@font-face {
+    font-family: 'semibold';
+    src: url('../fonts/Kommon/KommonGrotesk-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
   }
-
-.container_chat_bot {
-    display: flex;
-    flex-direction: column;
-    max-width: 260px;
-    width: 100%;
+  @font-face {
+    font-family: 'bold';
+    src: url('../fonts/Kommon/KommonGrotesk-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'thin';
+    src: url('../fonts/Kommon/KommonGrotesk-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
   }
   
+  @font-face {
+    font-family: 'light';
+    src: url('../fonts/Kommon/KommonGrotesk-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Cave';
+    src: url('../fonts/Cave/CaveatBrush-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body {
+background:rgba(23,23,23,255)
+  }
+
+  .det-wrapper {
+    position: absolute;
+    top:50% ;
+    left: 50%;
+    margin-left: -300px; /* Half of the width of your container (max-width) */
+    margin-top: -10%;
+    /* background-color: orange; */
+    max-width: 600px; 
+    width: 500px;
+    height: 600px;
+  }
+  
+  
+.container_chat_bot {
+    background-color: red;
+    /* display: flex; */
+    flex-direction: column;
+    max-width: 600px; 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    /* background-color: rgba(0,0,0,0.4);  */
+    background-color: red; 
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  .scaleIn{
+    animation: scaleIn 0.3s ease-in-out forwards ;
+
+  }
+  
+  .scaleOut{
+    animation: scaleOut 0.2s ease-out forwards ;
+  }
+  
+  
+
+  @keyframes scaleIn {
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes scaleOut {
+    0%{
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
   .container_chat_bot .container-chat-options {
     position: relative;
     display: flex;
-    background: linear-gradient(
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(
       to bottom right,
       #7e7e7e,
       #363636,
       #363636,
       #363636,
-      #363636
-    );
+      #363636 )*/
+
+      background-color: green;
+    ;
     border-radius: 16px;
     padding: 1.5px;
     overflow: hidden;
@@ -57,10 +140,12 @@ background:white
   .container_chat_bot .container-chat-options .chat .chat-bot {
     position: relative;
     display: flex;
+    flex-direction: column;
   }
   
   .container_chat_bot .chat .chat-bot textarea {
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: red;
     border-radius: 16px;
     border: none;
     width: 100%;
@@ -168,34 +253,36 @@ background:white
   
 
 
-  /* From Uiverse.io by Fcodingx */ 
+  /* MINI card css */ 
 .card {
-    width: 190px;
-    height: 120px;
+    width: 400px;
+    height: 250px;
     padding: 0.5rem;
-    background: rgba(198, 198, 198, 0.34);
-    border-radius: 8px;
+    background-color: #2a2a40;
+    /* background-color: rgb(23 23 23 ,  999); */
+    border-radius: 12px;
     backdrop-filter: blur(5px);
     border-bottom: 3px solid rgba(255, 255, 255, 0.440);
     border-left: 2px  rgba(255, 255, 255, 0.545) outset;
-    box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
     transform: skewX(10deg);
     transition: .4s;
     overflow: hidden;
     color: white;
+    margin: 20px;
   }
   
   .card:hover {
-    height: 254px;
+    height: 300px;
     transform: skew(0deg);
   }
   
   .align {
-    padding: 1rem;
+    padding: 0.1rem;
     display: flex;
-    flex-direction: row;
-    gap: 5px;
-    align-self: flex-start;
+    flex-direction: red;
+    gap: 8px;
+    justify-content: end;
   }
   
   .red {
@@ -224,23 +311,36 @@ background:white
   
   .card h1 {
     text-align: center;
-    margin: 1.3rem;
-    color: rgb(218, 244, 237);
+    font-family:'thin';
+    color: #eab89f;
+    font-size: 15px;
+    /* font-size: medium; */
+    margin: 1rem;
     text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
   }
   
-  .card-layout{
-    display: flex;
-    background:rgb(20, 24, 36);
-    max-width:70% ;
-    /* max-width: 400px; */
+  .card-container{
+    /* position: relative ; */
+    display: grid;
+  grid-template-columns: repeat(3, 1fr);
+    /* background-color:rgba(23,23,23,255); */
+    background-color: green;
+     max-width:70% ;
+   /* flex-wrap: wrap; */
     margin : 0 auto;
-    min-height: 90vh;
+    min-height: 30vh;
+    justify-content: center;
+    grid-auto-rows: auto;
+    /* gap: 80px;  */
     /* height :100%; */
+  }
+  .card-container.blurred{
+    pointer-events: none; 
+    filter: blur(4px);
   }
 
   .btns-plus button {
-    display: absolute;
+    display: relative;
     margin-left: 90px;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
