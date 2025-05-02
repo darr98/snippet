@@ -7,8 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 // import privateAxios from './axiosConfig';
 import  { AxiosError } from 'axios';
 import { AuthContext } from './AuthProvider';
-import useAuth from './useAuth';
-import   axios from './axiosConfig'; 
+import useAuth from './customhooks/useAuth';
+import   axios from './axios/axiosConfig'; 
 
 interface LoginComp{
     children? :React.ReactNode

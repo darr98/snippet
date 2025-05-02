@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import useAuth from './useAuth';
+import useAuth from './customhooks/useAuth';
 import useRefresh from './useRefreshToken';
 function User() {
 

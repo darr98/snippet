@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import useAuth from './useAuth'
+import useAuth from '../customhooks/useAuth'
 import { privateAxios } from './axiosConfig';
 import { error } from 'console';
-import useRefresh from './useRefreshToken';
+import useRefresh from '../useRefreshToken';
 
 const customAxios =()=> {
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import useAuth from "./useAuth";
+import useAuth from "./customhooks/useAuth";
 import useRefresh from "./useRefreshToken";
 
 interface AuthComp{

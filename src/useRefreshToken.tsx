@@ -1,7 +1,7 @@
 import { useContext, useDebugValue } from "react";
 import { AuthContext } from "./AuthProvider";
-import { privateAxios } from './axiosConfig'; 
-import   axios from './axiosConfig'; 
+import { privateAxios } from './axios/axiosConfig'; 
+import   axios from './axios/axiosConfig'; 
 import  { AxiosError } from 'axios';
 const useRefresh = () => {
 

@@ -2,7 +2,7 @@ import {useState,ReactHTMLElement,useRef ,useEffect } from 'react'
 import './App.css';
 import { randomUUID } from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
-import axiosConfig from './axiosConfig';
+import axiosConfig from './axios/axiosConfig';
 import  { AxiosError } from 'axios';
 
 interface RegisterComp{
